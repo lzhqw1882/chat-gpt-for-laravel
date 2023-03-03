@@ -2,7 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use \App\Http\Resources\QuestionsResource;
+use \App\Models\Questions;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -16,4 +17,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::prefix('questions')->group(function() {
+    Route::get('/', function () {
+        return new QuestionsResource(Questions::paginate());
+    });
+    Route::post('/', function () {
+
+    });
+    Route::get('/{seq}', function ($seq) {
+        return new QuestionsResource(Questions::find($seq));
+    });
 });

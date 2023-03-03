@@ -20,8 +20,6 @@ use App\Http\Controllers\QuestionsController;
 
 Route::get('/', [MainController::class,'index'])->name('index');
 
-Route::post('/create', [MainController::class,'create'])->name('create');
-
 Route::prefix('questions')->group(function() {
     Route::get('/', [QuestionsController::class, 'index'])->name('questions.index');
     Route::post('/', [QuestionsController::class, 'store'])->name('questions.store');

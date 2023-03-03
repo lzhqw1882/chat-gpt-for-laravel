@@ -25,10 +25,10 @@
                         <div class="list-group mt-2">
                             <a href="/questions/{{$row->seq}}" class="list-group-item list-group-item-action" aria-current="true" data-seq="">
                                 <div class="d-flex w-100 justify-content-between">
-                                    <h5 class="mb-1">{{$row->title}}</h5>
+                                    <h5 class="mb-1">Q. {{mb_substr($row->title,0, 30)}}</h5>
                                     <small>{{$row->created_at}}</small>
                                 </div>
-                                <small>{{$row->description}}</small>
+                                <small>A.{{mb_substr($row->description,0,200)}}</small>
                             </a>
                         </div>
                         @endforeach
